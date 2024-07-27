@@ -1,0 +1,17 @@
+<odoo>
+    <record id="doctor1" model="hr_hospital.doctor">
+        <field name="name">Dr. John Doe</field>
+        <field name="specialty">General Practitioner</field>
+        <field name="phone">+123456789</field>
+    </record>
+    <record id="doctor2" model="hr_hospital.doctor">
+        <field name="name">Dr. Jane Smith</field>
+        <field name="specialty">Cardiologist</field>
+        <field name="phone">+987654321</field>
+    </record>
+    <record id="doctor3" model="hr_hospital.doctor">
+        <field name="name">Dr. Emily Brown</field>
+        <field name="specialty">Endocrinologist</field>
+        <field name="phone">+192837465</field>
+    </record>
+</odoo>
