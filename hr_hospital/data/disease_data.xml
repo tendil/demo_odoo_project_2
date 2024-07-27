@@ -1,0 +1,14 @@
+<odoo>
+    <record id="disease1" model="hr_hospital.disease">
+        <field name="name">Flu</field>
+        <field name="description">A common viral infection.</field>
+    </record>
+    <record id="disease2" model="hr_hospital.disease">
+        <field name="name">COVID-19</field>
+        <field name="description">A viral respiratory illness.</field>
+    </record>
+    <record id="disease3" model="hr_hospital.disease">
+        <field name="name">Diabetes</field>
+        <field name="description">A chronic condition associated with abnormally high levels of sugar in the blood.</field>
+    </record>
+</odoo>

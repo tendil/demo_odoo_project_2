@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_doctor_tree" model="ir.ui.view">
+        <field name="name">doctor.tree</field>
+        <field name="model">hr_hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="specialty"/>
+                <field name="phone"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_doctor_form" model="ir.ui.view">
+        <field name="name">doctor.form</field>
+        <field name="model">hr_hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="specialty"/>
+                    <field name="phone"/>
+                    <field name="patient_ids"/>
+                    <field name="visit_ids"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

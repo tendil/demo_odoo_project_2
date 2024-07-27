@@ -1,0 +1,20 @@
+<odoo>
+    <!-- Определение действий -->
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">hr_hospital.patient</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hr_hospital.doctor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Определение меню -->
+    <menuitem id="menu_hr_hospital_root" name="Hospital" sequence="10"/>
+
+    <menuitem id="menu_hr_hospital_patients" name="Patients" parent="menu_hr_hospital_root" action="action_patient"/>
+    <menuitem id="menu_hr_hospital_doctors" name="Doctors" parent="menu_hr_hospital_root" action="action_doctor"/>
+</odoo>

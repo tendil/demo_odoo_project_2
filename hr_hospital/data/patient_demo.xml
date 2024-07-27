@@ -1,0 +1,20 @@
+<odoo>
+    <record id="patient1" model="hr_hospital.patient">
+        <field name="name">Alice Johnson</field>
+        <field name="age">30</field>
+        <field name="gender">female</field>
+        <field name="doctor_id" ref="doctor1"/>
+    </record>
+    <record id="patient2" model="hr_hospital.patient">
+        <field name="name">Bob Williams</field>
+        <field name="age">45</field>
+        <field name="gender">male</field>
+        <field name="doctor_id" ref="doctor2"/>
+    </record>
+    <record id="patient3" model="hr_hospital.patient">
+        <field name="name">Charlie Brown</field>
+        <field name="age">60</field>
+        <field name="gender">male</field>
+        <field name="doctor_id" ref="doctor3"/>
+    </record>
+</odoo>
