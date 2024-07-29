@@ -6,6 +6,7 @@
             <tree>
                 <field name="name"/>
                 <field name="description"/>
+                <field name="parent_id"/>
             </tree>
         </field>
     </record>
@@ -18,6 +19,8 @@
                 <group>
                     <field name="name"/>
                     <field name="description"/>
+                    <field name="parent_id"/>
+                    <field name="child_ids"/>
                 </group>
             </form>
         </field>

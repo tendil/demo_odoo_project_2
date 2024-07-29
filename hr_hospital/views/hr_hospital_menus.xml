@@ -12,9 +12,37 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_diagnosis" model="ir.actions.act_window">
+        <field name="name">Diagnoses</field>
+        <field name="res_model">hr_hospital.diagnosis</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_disease" model="ir.actions.act_window">
+        <field name="name">Diseases</field>
+        <field name="res_model">hr_hospital.disease</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_reassign_doctor_wizard" model="ir.actions.act_window">
+        <field name="name">Reassign Personal Doctor</field>
+        <field name="res_model">hr_hospital.reassign_doctor_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="action_diagnosis_report_wizard" model="ir.actions.act_window">
+        <field name="name">Diagnosis Report</field>
+        <field name="res_model">hr_hospital.diagnosis_report_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
     <!-- Определение меню -->
     <menuitem id="menu_hr_hospital_root" name="Hospital" sequence="10"/>
-
     <menuitem id="menu_hr_hospital_patients" name="Patients" parent="menu_hr_hospital_root" action="action_patient"/>
     <menuitem id="menu_hr_hospital_doctors" name="Doctors" parent="menu_hr_hospital_root" action="action_doctor"/>
+    <menuitem id="menu_hr_hospital_diagnoses" name="Diagnoses" parent="menu_hr_hospital_root" action="action_diagnosis"/>
+    <menuitem id="menu_hr_hospital_diseases" name="Diseases" parent="menu_hr_hospital_root" action="action_disease"/>
+    <menuitem id="menu_diagnosis_report_wizard" name="Diagnosis Report" parent="menu_hr_hospital_root" action="action_diagnosis_report_wizard" sequence="20"/>
 </odoo>

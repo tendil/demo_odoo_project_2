@@ -1,4 +1,5 @@
-from odoo import models, fields
+from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class Visit(models.Model):
@@ -7,5 +8,36 @@ class Visit(models.Model):
 
     patient_id = fields.Many2one('hr_hospital.patient', string='Patient', required=True)
     doctor_id = fields.Many2one('hr_hospital.doctor', string='Doctor', required=True)
-    visit_date = fields.Datetime(string='Visit Date', required=True, default=fields.Datetime.now)
+    planned_datetime = fields.Datetime(string='Planned Date and Time', required=True)
+    visit_datetime = fields.Datetime(string='Visit Date and Time')
+    status = fields.Selection([
+        ('planned', 'Planned'),
+        ('done', 'Done'),
+        ('cancelled', 'Cancelled')
+    ], string='Status', default='planned')
+    diagnosis_ids = fields.One2many('hr_hospital.diagnosis', 'visit_id', string='Diagnosis')
     notes = fields.Text(string='Notes')
+
+    @api.constrains('planned_datetime', 'doctor_id', 'patient_id')
+    def _check_visit_uniqueness(self):
+        for visit in self:
+            overlapping_visits = self.search([
+                ('planned_datetime', '=', visit.planned_datetime),
+                ('doctor_id', '=', visit.doctor_id.id),
+                ('patient_id', '=', visit.patient_id.id),
+                ('id', '!=', visit.id)
+            ])
+            if overlapping_visits:
+                raise ValidationError('A patient cannot have more than one visit with the same doctor on the same day.')
+
+    @api.constrains('status', 'visit_datetime', 'doctor_id', 'planned_datetime')
+    def _check_visit_modification(self):
+        for visit in self:
+            if visit.status == 'done' and (visit.visit_datetime or visit.doctor_id or visit.planned_datetime):
+                raise ValidationError('Cannot modify the date, time or doctor of a completed visit.')
+
+    @api.constrains('diagnosis_ids')
+    def _check_visit_archiving(self):
+        for visit in self:
+            if visit.diagnosis_ids and (visit.status == 'cancelled'):
+                raise ValidationError('Cannot cancel a visit with diagnoses.')

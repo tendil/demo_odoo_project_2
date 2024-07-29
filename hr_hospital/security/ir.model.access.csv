@@ -3,3 +3,7 @@ access_doctor,access_doctor,model_hr_hospital_doctor,base.group_user,1,1,1,1
 access_patient,access_patient,model_hr_hospital_patient,base.group_user,1,1,1,1
 access_disease,access_disease,model_hr_hospital_disease,base.group_user,1,1,1,1
 access_visit,access_visit,model_hr_hospital_visit,base.group_user,1,1,1,1
+access_diagnosis,access_diagnosis,model_hr_hospital_diagnosis,base.group_user,1,1,1,1
+access_specialty,access_specialty,model_hr_hospital_specialty,base.group_user,1,1,1,1
+access_reassign_doctor_wizard,access_reassign_doctor_wizard,model_hr_hospital_reassign_doctor_wizard,base.group_user,1,1,1,1
+access_diagnosis_report_wizard,access_diagnosis_report_wizard,model_hr_hospital_diagnosis_report_wizard,base.group_user,1,1,1,1

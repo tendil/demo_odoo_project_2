@@ -1,0 +1,29 @@
+<odoo>
+    <template id="diagnosis_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="data['grouped_diagnoses'].items()" t-as="item">
+                <h2><t t-esc="item[0]"/></h2>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Visit Date</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="item[1]" t-as="diagnosis">
+                            <tr>
+                                <td><t t-esc="diagnosis.visit_id.patient_id.name"/></td>
+                                <td><t t-esc="diagnosis.visit_id.doctor_id.name"/></td>
+                                <td><t t-esc="diagnosis.visit_id.visit_date"/></td>
+                                <td><t t-esc="diagnosis.description"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_diagnosis_report_wizard_form" model="ir.ui.view">
+        <field name="name">diagnosis.report.wizard.form</field>
+        <field name="model">hr_hospital.diagnosis_report_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Diagnosis Report">
+                <group>
+                    <field name="doctor_ids" widget="many2many_tags"/>
+                    <field name="disease_ids" widget="many2many_tags"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button string="Generate Report" type="object" name="generate_report" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
