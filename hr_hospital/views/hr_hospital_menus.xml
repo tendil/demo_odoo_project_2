@@ -12,9 +12,15 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_diagnosis" model="ir.actions.act_window">
+        <field name="name">Diagnoses</field>
+        <field name="res_model">hr_hospital.diagnosis</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <!-- Определение меню -->
     <menuitem id="menu_hr_hospital_root" name="Hospital" sequence="10"/>
-
     <menuitem id="menu_hr_hospital_patients" name="Patients" parent="menu_hr_hospital_root" action="action_patient"/>
     <menuitem id="menu_hr_hospital_doctors" name="Doctors" parent="menu_hr_hospital_root" action="action_doctor"/>
+    <menuitem id="menu_hr_hospital_diagnoses" name="Diagnoses" parent="menu_hr_hospital_root" action="action_diagnosis"/>
 </odoo>

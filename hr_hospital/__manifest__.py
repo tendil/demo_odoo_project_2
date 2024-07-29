@@ -1,5 +1,6 @@
 # Copyright (c) 2022 Meita Dmitry
 # MIT License (https://mit-license.org/)
+
 {
     'name': 'Hospital Management',
     'version': '1.0',
@@ -20,9 +21,11 @@
         'views/patient_views.xml',
         'views/disease_views.xml',
         'views/visit_views.xml',
+        'views/diagnosis_views.xml',
         'data/disease_data.xml',
         'data/doctor_demo.xml',
         'data/patient_demo.xml',
+        'views/specialty_views.xml',
     ],
     'demo': [
         'data/doctor_demo.xml',

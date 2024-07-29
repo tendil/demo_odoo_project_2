@@ -6,7 +6,9 @@
             <tree>
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
-                <field name="visit_date"/>
+                <field name="planned_datetime"/>
+                <field name="visit_datetime"/>
+                <field name="status"/>
             </tree>
         </field>
     </record>
@@ -19,7 +21,10 @@
                 <group>
                     <field name="patient_id"/>
                     <field name="doctor_id"/>
-                    <field name="visit_date"/>
+                    <field name="planned_datetime"/>
+                    <field name="visit_datetime"/>
+                    <field name="status"/>
+                    <field name="diagnosis_ids"/>
                     <field name="notes"/>
                 </group>
             </form>

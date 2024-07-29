@@ -1,17 +1,32 @@
 <odoo>
+    <!-- Demo data for specialties -->
+    <record id="specialty_general_practitioner" model="hr_hospital.specialty">
+        <field name="name">General Practitioner</field>
+    </record>
+    <record id="specialty_cardiologist" model="hr_hospital.specialty">
+        <field name="name">Cardiologist</field>
+    </record>
+    <record id="specialty_endocrinologist" model="hr_hospital.specialty">
+        <field name="name">Endocrinologist</field>
+    </record>
+
+    <!-- Demo data for doctors -->
     <record id="doctor1" model="hr_hospital.doctor">
-        <field name="name">Dr. John Doe</field>
-        <field name="specialty">General Practitioner</field>
+        <field name="first_name">John</field>
+        <field name="last_name">Doe</field>
+        <field name="specialty_id" ref="specialty_general_practitioner"/>
         <field name="phone">+123456789</field>
     </record>
     <record id="doctor2" model="hr_hospital.doctor">
-        <field name="name">Dr. Jane Smith</field>
-        <field name="specialty">Cardiologist</field>
+        <field name="first_name">Jane</field>
+        <field name="last_name">Smith</field>
+        <field name="specialty_id" ref="specialty_cardiologist"/>
         <field name="phone">+987654321</field>
     </record>
     <record id="doctor3" model="hr_hospital.doctor">
-        <field name="name">Dr. Emily Brown</field>
-        <field name="specialty">Endocrinologist</field>
+        <field name="first_name">Emily</field>
+        <field name="last_name">Brown</field>
+        <field name="specialty_id" ref="specialty_endocrinologist"/>
         <field name="phone">+192837465</field>
     </record>
 </odoo>
