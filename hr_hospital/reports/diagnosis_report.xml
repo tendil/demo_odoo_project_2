@@ -1,0 +1,10 @@
+<odoo>
+    <record id="action_diagnosis_report" model="ir.actions.report">
+        <field name="name">Diagnosis Report</field>
+        <field name="model">hr_hospital.diagnosis_report_wizard</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">hr_hospital.diagnosis_report_template</field>
+        <field name="report_file">hr_hospital.diagnosis_report_template</field>
+        <field name="binding_model_id" ref="model_hr_hospital_diagnosis_report_wizard"/>
+    </record>
+</odoo>
