@@ -29,4 +29,20 @@
         <field name="specialty_id" ref="specialty_endocrinologist"/>
         <field name="phone">+192837465</field>
     </record>
+
+    <record id="doctor_intern_1" model="hr_hospital.doctor">
+        <field name="name">Dr. John Intern</field>
+        <field name="specialty_id" ref="specialty_cardiologist"/>
+        <field name="phone">+123456789</field>
+        <field name="is_intern">True</field>
+        <field name="mentor_id" ref="doctor1"/>
+    </record>
+
+    <record id="doctor_intern_2" model="hr_hospital.doctor">
+        <field name="name">Dr. Jane Intern</field>
+        <field name="specialty_id" ref="specialty_endocrinologist"/>
+        <field name="phone">+987654321</field>
+        <field name="is_intern">True</field>
+        <field name="mentor_id" ref="doctor2"/>
+    </record>
 </odoo>

@@ -1,4 +1,93 @@
 <odoo>
+    <!-- Form view -->
+<record id="view_doctor_form" model="ir.ui.view">
+        <field name="name">doctor.form</field>
+        <field name="model">hr_hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="specialty_id"/>
+                        <field name="phone"/>
+                        <field name="is_intern"/>
+                        <field name="mentor_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Interns">
+                            <field name="intern_ids">
+                                <kanban>
+                                    <field name="name"/>
+                                    <field name="specialty_id"/>
+                                    <field name="phone"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                                <div>
+                                                    <strong><field name="name" options="{'required': True}"/></strong>
+                                                </div>
+                                                <div><field name="specialty_id"/></div>
+                                                <div><field name="phone"/></div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Mentor">
+                            <group>
+                                <field name="mentor_id"/>
+                                <field name="mentor_specialty_id"/>
+                                <field name="mentor_phone"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="view_doctor_filter" model="ir.ui.view">
+        <field name="name">doctor.filter</field>
+        <field name="model">hr_hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="specialty_id"/>
+                <field name="is_intern"/>
+                <filter name="mentor_filter" string="Mentors" domain="[('is_intern', '=', False)]"/>
+                <filter name="intern_filter" string="Interns" domain="[('is_intern', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Kanban view -->
+    <record id="view_doctor_kanban" model="ir.ui.view">
+        <field name="name">doctor.kanban</field>
+        <field name="model">hr_hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="specialty_id"/>
+                <field name="phone"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div>
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div><field name="specialty_id"/></div>
+                            <div><field name="phone"/></div>
+                            <a type="action" name="%(action_visit)d" string="Create Visit" class="btn-primary"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Tree view -->
     <record id="view_doctor_tree" model="ir.ui.view">
         <field name="name">doctor.tree</field>
         <field name="model">hr_hospital.doctor</field>
@@ -7,26 +96,16 @@
                 <field name="name"/>
                 <field name="specialty_id"/>
                 <field name="phone"/>
+                <field name="is_intern"/>
             </tree>
         </field>
     </record>
 
-    <record id="view_doctor_form" model="ir.ui.view">
-        <field name="name">doctor.form</field>
-        <field name="model">hr_hospital.doctor</field>
-        <field name="arch" type="xml">
-            <form>
-                <group>
-                    <field name="first_name"/>
-                    <field name="last_name"/>
-                    <field name="specialty_id"/>
-                    <field name="phone"/>
-                    <field name="is_intern"/>
-                    <field name="mentor_id" modifiers="{'invisible': [('is_intern', '=', False)]}"/>
-                    <field name="patient_ids"/>
-                    <field name="visit_ids"/>
-                </group>
-            </form>
-        </field>
+    <!-- Action for doctors -->
+    <record id="view_doctor_action" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hr_hospital.doctor</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="search_view_id" ref="view_doctor_filter"/>
     </record>
 </odoo>

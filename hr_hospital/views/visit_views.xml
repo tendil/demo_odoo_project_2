@@ -17,17 +17,61 @@
         <field name="name">visit.form</field>
         <field name="model">hr_hospital.visit</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Patient Visit">
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="planned,done,cancelled"/>
+                </header>
                 <group>
                     <field name="patient_id"/>
                     <field name="doctor_id"/>
                     <field name="planned_datetime"/>
                     <field name="visit_datetime"/>
                     <field name="status"/>
-                    <field name="diagnosis_ids"/>
+                    <field name="diagnosis_ids" widget="many2many_tags"/>
                     <field name="notes"/>
                 </group>
             </form>
+        </field>
+    </record>
+
+    <record id="view_visit_calendar" model="ir.ui.view">
+        <field name="name">visit.calendar</field>
+        <field name="model">hr_hospital.visit</field>
+        <field name="arch" type="xml">
+            <calendar string="Patient Visits" date_start="planned_datetime" color="status">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="status"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_visit_search" model="ir.ui.view">
+        <field name="name">visit.search</field>
+        <field name="model">hr_hospital.visit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="status"/>
+                <group expand="1" string="Status">
+                    <filter name="planned" string="Planned" domain="[('status', '=', 'planned')]"/>
+                    <filter name="done" string="Done" domain="[('status', '=', 'done')]"/>
+                    <filter name="cancelled" string="Cancelled" domain="[('status', '=', 'cancelled')]"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_visit_pivot" model="ir.ui.view">
+        <field name="name">visit.pivot</field>
+        <field name="model">hr_hospital.visit</field>
+        <field name="arch" type="xml">
+            <pivot string="Patient Visits Analysis">
+                <field name="doctor_id" type="row"/>
+                <field name="status" type="col"/>
+                <field name="patient_id" type="measure" string="Number of Visits" operator="count"/>
+            </pivot>
         </field>
     </record>
 </odoo>

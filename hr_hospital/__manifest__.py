@@ -3,8 +3,8 @@
 
 {
     'name': 'Hospital Management',
-    'version': '1.0',
-    "development_status": "Test",
+    'version': '17.0.1.3.0',
+    "development_status": "Alpha",
     "website": "https://github.com/tendil/demo_odoo_project_2",
     'category': 'Management',
     'summary': 'Module for managing hospital operations',
@@ -30,10 +30,14 @@
         'data/disease_data.xml',
         'data/doctor_demo.xml',
         'data/patient_demo.xml',
+        'data/visit_demo.xml',
+        'data/diagnosis_demo.xml',
     ],
     'demo': [
         'data/doctor_demo.xml',
         'data/patient_demo.xml',
+        'data/visit_demo.xml',
+        'data/diagnosis_demo.xml',
     ],
     'installable': True,
     'application': False,

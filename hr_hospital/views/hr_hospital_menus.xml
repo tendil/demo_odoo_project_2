@@ -24,6 +24,13 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_visit" model="ir.actions.act_window">
+        <field name="name">Visits</field>
+        <field name="res_model">hr_hospital.visit</field>
+        <field name="view_mode">tree,form,calendar,pivot</field>
+        <field name="search_view_id" ref="hr_hospital.view_visit_search"/>
+    </record>
+
     <record id="action_reassign_doctor_wizard" model="ir.actions.act_window">
         <field name="name">Reassign Personal Doctor</field>
         <field name="res_model">hr_hospital.reassign_doctor_wizard</field>
@@ -42,7 +49,10 @@
     <menuitem id="menu_hr_hospital_root" name="Hospital" sequence="10"/>
     <menuitem id="menu_hr_hospital_patients" name="Patients" parent="menu_hr_hospital_root" action="action_patient"/>
     <menuitem id="menu_hr_hospital_doctors" name="Doctors" parent="menu_hr_hospital_root" action="action_doctor"/>
-    <menuitem id="menu_hr_hospital_diagnoses" name="Diagnoses" parent="menu_hr_hospital_root" action="action_diagnosis"/>
+    <menuitem id="menu_hr_hospital_diagnoses" name="Diagnoses" parent="menu_hr_hospital_root"
+              action="action_diagnosis"/>
     <menuitem id="menu_hr_hospital_diseases" name="Diseases" parent="menu_hr_hospital_root" action="action_disease"/>
-    <menuitem id="menu_diagnosis_report_wizard" name="Diagnosis Report" parent="menu_hr_hospital_root" action="action_diagnosis_report_wizard" sequence="20"/>
+    <menuitem id="menu_hr_hospital_visits" name="Visits" parent="menu_hr_hospital_root" action="action_visit"/>
+    <menuitem id="menu_diagnosis_report_wizard" name="Diagnosis Report" parent="menu_hr_hospital_root"
+              action="action_diagnosis_report_wizard" sequence="20"/>
 </odoo>
