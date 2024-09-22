@@ -1,0 +1,49 @@
+<odoo>
+    <!-- Diagnosis for Patient 1 with Flu -->
+    <record id="diagnosis_1" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_flu"/>
+        <field name="visit_id" ref="visit_1"/>
+        <field name="description">Diagnosis of Flu for Patient 1</field>
+        <field name="approved" eval="True"/>
+    </record>
+
+    <!-- Diagnosis for Patient 2 with COVID-19 -->
+    <record id="diagnosis_2" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_covid19"/>
+        <field name="visit_id" ref="visit_2"/>
+        <field name="description">Diagnosis of COVID-19 for Patient 2</field>
+        <field name="approved" eval="True"/>
+    </record>
+
+    <!-- Diagnosis for Patient 3 with Tuberculosis -->
+    <record id="diagnosis_3" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_tuberculosis"/>
+        <field name="visit_id" ref="visit_3"/>
+        <field name="description">Diagnosis of Tuberculosis for Patient 3</field>
+        <field name="approved" eval="True"/>
+    </record>
+
+    <!-- Second Diagnosis for Patient 1 with Flu (Follow-up) -->
+    <record id="diagnosis_4" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_flu"/>
+        <field name="visit_id" ref="visit_4"/>
+        <field name="description">Follow-up Diagnosis of Flu for Patient 1</field>
+        <field name="approved" eval="False"/>
+    </record>
+
+    <!-- Second Diagnosis for Patient 2 with COVID-19 (Follow-up) -->
+    <record id="diagnosis_5" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_covid19"/>
+        <field name="visit_id" ref="visit_2"/>
+        <field name="description">Follow-up Diagnosis of COVID-19 for Patient 2</field>
+        <field name="approved" eval="False"/>
+    </record>
+
+    <!-- Second Diagnosis for Patient 3 with Tuberculosis (Follow-up) -->
+    <record id="diagnosis_6" model="hr_hospital.diagnosis">
+        <field name="disease_id" ref="disease_tuberculosis"/>
+        <field name="visit_id" ref="visit_3"/>
+        <field name="description">Follow-up Diagnosis of Tuberculosis for Patient 3</field>
+        <field name="approved" eval="False"/>
+    </record>
+</odoo>

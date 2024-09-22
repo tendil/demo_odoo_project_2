@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -28,16 +28,21 @@ class Visit(models.Model):
                 ('id', '!=', visit.id)
             ])
             if overlapping_visits:
-                raise ValidationError('A patient cannot have more than one visit with the same doctor on the same day.')
+                raise ValidationError(_('A patient cannot have more than one visit with the same doctor on the same day.'))
 
     @api.constrains('status', 'visit_datetime', 'doctor_id', 'planned_datetime')
     def _check_visit_modification(self):
         for visit in self:
-            if visit.status == 'done' and (visit.visit_datetime or visit.doctor_id or visit.planned_datetime):
-                raise ValidationError('Cannot modify the date, time or doctor of a completed visit.')
+            if visit.status == 'done':
+                if 'doctor_id' in visit._origin and visit.doctor_id != visit._origin.doctor_id:
+                    raise ValidationError(_('Cannot modify the doctor of a completed visit.'))
+                if 'planned_datetime' in visit._origin and visit.planned_datetime != visit._origin.planned_datetime:
+                    raise ValidationError(_('Cannot modify the planned date and time of a completed visit.'))
+                if 'visit_datetime' in visit._origin and visit.visit_datetime != visit._origin.visit_datetime:
+                    raise ValidationError(_('Cannot modify the visit date and time of a completed visit.'))
 
     @api.constrains('diagnosis_ids')
     def _check_visit_archiving(self):
         for visit in self:
             if visit.diagnosis_ids and (visit.status == 'cancelled'):
-                raise ValidationError('Cannot cancel a visit with diagnoses.')
+                raise ValidationError(_('Cannot cancel a visit with diagnoses.'))

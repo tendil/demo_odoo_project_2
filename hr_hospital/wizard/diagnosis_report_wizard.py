@@ -27,3 +27,4 @@ class DiagnosisReportWizard(models.TransientModel):
             grouped_diagnoses[disease_name].append(diagnosis)
 
         return self.env.ref('hr_hospital.action_diagnosis_report').report_action(self, data={'grouped_diagnoses': grouped_diagnoses})
+    
