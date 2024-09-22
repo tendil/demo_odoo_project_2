@@ -1,1 +1,1 @@
-from . import diagnosis_report
+from . import doctor_report

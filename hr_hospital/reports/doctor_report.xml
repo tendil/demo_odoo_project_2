@@ -1,0 +1,72 @@
+<odoo>
+    <template id="report_doctor_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <!-- Логотип и информация о компании -->
+                    <div class="header">
+                        <img src="/path_to_logo.png" alt="Logo" height="50"/>
+                        <div>
+                            <strong>Company Name</strong><br/>
+                            Address: Your Company Address<br/>
+                            Phone: Your Company Phone
+                        </div>
+                    </div>
+
+                    <!-- Заголовок с именем врача и специальностью -->
+                    <h1 t-esc="doc.name"/> - <span t-esc="doc.specialty_id.name"/>
+
+                    <!-- История визитов -->
+                    <h3>History of Visits</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Patient</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.visit_ids" t-as="visit">
+                                <td t-esc="visit.date"/>
+                                <td t-esc="visit.patient_id.name"/>
+                                <td t-esc="visit.state"/>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Список пациентов -->
+                    <h3>Patients</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Gender</th>
+                                <th>Date of Birth</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.patient_ids" t-as="patient">
+                                <td t-esc="patient.name"/>
+                                <td t-esc="patient.gender"/>
+                                <td t-esc="patient.birthdate"/>
+                                <td t-esc="patient.phone"/>
+                                <td t-attf-style="background-color: #{'yellow' if patient.visit_status == 'Заплановано' else 'green' if patient.visit_status == 'Завершено' else 'red'}">
+                                    <span t-esc="patient.visit_status"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Дата и место печати -->
+                    <div class="footer">
+                        <p>Printed on: <span t-esc="time.strftime('%Y-%m-%d %H:%M:%S')"/></p>
+                        <p>Location: Your City</p>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

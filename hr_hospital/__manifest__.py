@@ -26,7 +26,7 @@
         'views/reassign_doctor_wizard_views.xml',
         'views/diagnosis_report_wizard_views.xml',
         'views/report_diagnosis_template.xml',
-        'reports/diagnosis_report.xml',
+        'reports/doctor_report.xml',
         'data/disease_data.xml',
         'data/doctor_demo.xml',
         'data/patient_demo.xml',
