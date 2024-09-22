@@ -28,3 +28,6 @@ class Doctor(models.Model):
                 raise ValidationError(_('Non-intern doctor cannot have a mentor.'))
             if doctor.is_intern and doctor.mentor_id == doctor:
                 raise ValidationError(_('Doctor cannot be their own mentor.'))
+
+    def get_report(self):
+        return self.env.ref('your_module_name.report_doctor_document').report_action(self)

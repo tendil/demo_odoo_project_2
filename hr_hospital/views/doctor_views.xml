@@ -5,6 +5,9 @@
         <field name="model">hr_hospital.doctor</field>
         <field name="arch" type="xml">
             <form string="Doctor Form">
+                <header>
+                    <button name="get_report" string="Print Report" type="object" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
@@ -70,16 +73,43 @@
             <kanban>
                 <field name="name"/>
                 <field name="specialty_id"/>
-                <field name="phone"/>
+                <field name="intern_ids"/>
+
+                <!-- Канбан карточка -->
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_card oe_kanban_global_click">
                             <div>
-                                <strong><field name="name"/></strong>
+                                <strong><field name="name"/></strong><br/>
+                                <span t-esc="record.specialty_id.value"/>
                             </div>
-                            <div><field name="specialty_id"/></div>
-                            <div><field name="phone"/></div>
-                            <a type="action" name="%(action_visit)d" string="Create Visit" class="btn-primary"/>
+
+                            <!-- Список интернов, если врач ментор -->
+                            <t t-if="record.intern_ids.raw_value">
+                                <div>
+                                    <strong>Interns:</strong>
+                                    <ul>
+                                        <li t-foreach="record.intern_ids.raw_value" t-as="intern">
+                                            <span t-esc="intern.name"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </t>
+
+                            <!-- Подменю для управления записями -->
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-bars"/>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a type="edit">Edit</a>
+                                    </li>
+                                    <li>
+                                        <a type="delete">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </t>
                 </templates>
